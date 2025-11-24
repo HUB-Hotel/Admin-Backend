@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const partnerSchema = new mongoose.Schema({
+const businessSchema = new mongoose.Schema({
     // 1. 파트너 계정 정보 (파트너 대시보드 로그인용)
     email: {
         type: String,
@@ -51,8 +51,8 @@ const partnerSchema = new mongoose.Schema({
     timestamps: true // createdAt, updatedAt 자동 생성
 });
 
-// Admin 모델과 동일하게, Partner 계정 생성 시 비밀번호 암호화
-partnerSchema.pre('save', async function (next) {
+// Admin 모델과 동일하게, business 계정 생성 시 비밀번호 암호화
+businessSchema.pre('save', async function (next) {
     if (!this.isModified('password')) {
         return next();
     }
@@ -65,10 +65,11 @@ partnerSchema.pre('save', async function (next) {
     }
 });
 
-// Partner 로그인 시 비밀번호 비교 메서드
-partnerSchema.methods.comparePassword = async function (inputPassword) {
+// business 로그인 시 비밀번호 비교 메서드
+businessSchema.methods.comparePassword = async function (inputPassword) {
     return await bcrypt.compare(inputPassword, this.password);
 };
 
-const Partner = mongoose.model('Partner', partnerSchema);
-module.exports = Partner;
+const Business = mongoose.models.Business || mongoose.model('Business', businessSchema);
+
+module.exports = Business;

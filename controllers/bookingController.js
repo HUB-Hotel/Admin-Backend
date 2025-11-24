@@ -22,7 +22,7 @@ exports.getAllBookings = async (req, res) => {
         if (userId) filter.user = userId;
 
         // populate를 사용하면 user, room의 상세 정보까지 한번에 가져옵니다.
-        // (지금은 Room/Accommodation 데이터가 없어서 에러 날 수 있으니 일단 주석 처리하거나 뺍니다)
+        // (지금은 Room/Lodging 데이터가 없어서 에러 날 수 있으니 일단 주석 처리하거나 뺍니다)
         // const bookings = await Booking.find(filter).populate('user', 'name email');
 
         const bookings = await Booking.find(filter).sort({ createdAt: -1 }); // 최신순

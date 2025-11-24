@@ -8,10 +8,10 @@ const bookingSchema = new mongoose.Schema({
         required: true,
     },
 
-    // 2. 숙소 및 객실 정보 (나중에 Accommodation, Room 모델 참조)
-    accommodation: { // 어느 호텔인지 (검색 편의성)
+    // 2. 숙소 및 객실 정보 (나중에 Lodging, Room 모델 참조)
+    Lodging: { // 어느 호텔인지 (검색 편의성)
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Accommodation',
+        ref: 'Lodging',
         required: true,
     },
     room: { // 어떤 객실인지

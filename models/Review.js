@@ -12,9 +12,9 @@ const reviewSchema = new mongoose.Schema({
         ref: 'Booking',
         required: true,
     },
-    accommodation: { // 어떤 숙소인지 (검색 편의성)
+    Lodging: { // 어떤 숙소인지 (검색 편의성)
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Accommodation',
+        ref: 'Lodging',
         required: true,
     },
 
