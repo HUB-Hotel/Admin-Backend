@@ -1,24 +1,7 @@
 import * as authService from './service.js'; // 확장자 .js 필수
 import { successResponse, errorResponse } from '../common/response.js';
 
-// 1. 회원가입
-export const register = async (req, res) => {
-    try {
-        const admin = await authService.createAdmin(req.body);
-
-        // 통일된 성공 응답 포맷 사용
-        res.status(201).json(successResponse({
-            adminId: admin._id,
-            email: admin.email,
-        }, "관리자 계정이 생성되었습니다.", 201));
-
-    } catch (error) {
-        // 통일된 에러 응답 포맷 사용
-        res.status(400).json(errorResponse(error.message, 400));
-    }
-};
-
-// 2. 로그인
+// 1. 로그인
 export const login = async (req, res) => {
     try {
         const { email, password } = req.body;

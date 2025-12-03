@@ -11,15 +11,6 @@ const protect = verifyToken;
 // POST /api/auth/login
 router.post('/login', authController.login);
 
-// POST /api/auth/register
-// ⭐️ 테스트 중이라 protect 주석 처리 원하시면 아래처럼 유지하세요.
-router.post(
-    '/register',
-    // protect, 
-    // authorize('admin'), 
-    authController.register
-);
-
 // GET /api/auth/me
 router.get(
     '/me',

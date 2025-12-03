@@ -11,10 +11,7 @@ import authRoutes from './auth/route.js';
 import businessRoutes from './business/route.js';
 import userRoutes from './user/route.js';
 import lodgingRoutes from './lodging/route.js';
-import roomRoutes from './room/route.js';
-import bookingRoutes from './booking/route.js';
 import reviewRoutes from './review/route.js';
-import categoryRoutes from './category/route.js';
 import promotionRoutes from './promotion/route.js';
 import dashboardRoutes from './dashboard/route.js';
 
@@ -47,9 +44,6 @@ app.use('/api/admin/dashboard', dashboardRoutes);
 
 // 일반 API 경로 (필요시)
 app.use('/api/users', userRoutes);
-app.use('/api/rooms', roomRoutes);
-app.use('/api/bookings', bookingRoutes);
-app.use('/api/categories', categoryRoutes);
 
 // 기본 경로
 app.get('/', (req, res) => {

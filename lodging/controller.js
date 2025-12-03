@@ -12,17 +12,7 @@ export const createLodging = async (req, res) => {
     }
 };
 
-// 2. 전체 숙소 조회 (관리자)
-export const getAllLodgings = async (req, res) => {
-    try {
-        const lodgings = await lodgingService.getAllLodgings();
-        res.status(200).json(successResponse(lodgings, "전체 숙소 목록 조회 성공"));
-    } catch (error) {
-        res.status(500).json(errorResponse(error.message, 500));
-    }
-};
-
-// 3. 내 숙소 조회 (사업자)
+// 2. 내 숙소 조회 (사업자)
 export const getMyLodgings = async (req, res) => {
     try {
         const lodgings = await lodgingService.getLodgingsByBusinessId(req.user.id);
@@ -32,7 +22,7 @@ export const getMyLodgings = async (req, res) => {
     }
 };
 
-// 4. 상세 조회
+// 3. 상세 조회
 export const getLodgingById = async (req, res) => {
     try {
         const lodging = await lodgingService.getLodgingById(req.params.id);
@@ -42,7 +32,7 @@ export const getLodgingById = async (req, res) => {
     }
 };
 
-// 5. 수정
+// 4. 수정
 export const updateLodging = async (req, res) => {
     try {
         const lodging = await lodgingService.updateLodging(req.params.id, req.body);
@@ -52,7 +42,7 @@ export const updateLodging = async (req, res) => {
     }
 };
 
-// 6. 삭제
+// 5. 삭제
 export const deleteLodging = async (req, res) => {
     try {
         await lodgingService.deleteLodging(req.params.id);
