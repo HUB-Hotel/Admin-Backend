@@ -52,6 +52,13 @@ app.get('/', (req, res) => {
 
 // 404 에러 처리
 app.use((req, res, next) => {
+    console.error('❌ 404 에러 - 경로를 찾을 수 없음:', {
+        method: req.method,
+        url: req.url,
+        originalUrl: req.originalUrl,
+        path: req.path,
+        baseUrl: req.baseUrl
+    });
     res.status(404).json(errorResponse("API 경로를 찾을 수 없습니다.", 404));
 });
 
